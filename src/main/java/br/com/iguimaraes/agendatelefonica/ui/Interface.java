@@ -28,7 +28,6 @@ public class Interface extends javax.swing.JFrame {
      */
     public Interface() {
         initComponents();
-        PopularLista();
     }
 
     /**
@@ -163,21 +162,28 @@ public class Interface extends javax.swing.JFrame {
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "NOME", "DTNASC", "TELEFONE", "EMAIL"
+                "ID", "NOME", "DTNASC", "TELEFONE", "EMAIL", "DATA"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane2.setViewportView(tabela);
@@ -294,7 +300,7 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Connection conn = getConnection();
-            String query = "use db_agenda; insert into tb_agenda(nome,dtnasc,telefone,email) values ('" + txt_nome.getText() + "', '" + txt_dtnasc.getText() + "', '" + txt_tel.getText() + "', '" + txt_mail.getText() + "')";
+            String query = "use db_agenda; insert into tb_agenda(nome,dtnasc,telefone,email, data) values ('" + txt_nome.getText() + "', '" + txt_dtnasc.getText() + "', '" + txt_tel.getText() + "', '" + txt_mail.getText() + "', now())";
             CallableStatement cs;
             cs = conn.prepareCall(query);
             cs.execute();
@@ -316,7 +322,7 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Connection conn = getConnection();
-            String query = "drop database if exists DB_AGENDA; create database DB_AGENDA; use DB_AGENDA; create table TB_AGENDA(ID int auto_increment primary key, NOME varchar(255), DTNASC varchar(20), TELEFONE varchar(20), EMAIL varchar(255));";
+            String query = "drop database if exists DB_AGENDA; create database DB_AGENDA; use DB_AGENDA; create table TB_AGENDA(ID int auto_increment primary key, NOME varchar(255), DTNASC varchar(20), TELEFONE varchar(20), EMAIL varchar(255), DATA datetime );";
             CallableStatement cs;
             cs = conn.prepareCall(query);
             cs.execute();
