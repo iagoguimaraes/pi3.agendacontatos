@@ -86,7 +86,12 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="bt_limpar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="bt_add" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lb_nome" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lb_dtnasc" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -96,15 +101,10 @@
                               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txt_nome" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_mail" alignment="0" pref="405" max="32767" attributes="0"/>
                                   <Component id="txt_dtnasc" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txt_tel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txt_mail" alignment="0" pref="405" max="32767" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="bt_limpar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="bt_add" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -167,10 +167,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txt_nome">
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_dtnasc">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_tel">
-            </Component>
             <Component class="javax.swing.JTextField" name="txt_mail">
             </Component>
             <Component class="javax.swing.JToggleButton" name="bt_limpar">
@@ -188,6 +184,21 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_addActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="txt_dtnasc">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="##/##/####" subtype="-1" type="5"/>
+                </Property>
+                <Property name="focusLostBehavior" type="int" value="3"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="txt_tel">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="(##)#####-####" subtype="-1" type="5"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

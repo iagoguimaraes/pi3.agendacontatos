@@ -48,11 +48,11 @@ public class Interface extends javax.swing.JFrame {
         lb_tel = new javax.swing.JLabel();
         lb_mail = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
-        txt_dtnasc = new javax.swing.JTextField();
-        txt_tel = new javax.swing.JTextField();
         txt_mail = new javax.swing.JTextField();
         bt_limpar = new javax.swing.JToggleButton();
         bt_add = new javax.swing.JToggleButton();
+        txt_dtnasc = new javax.swing.JFormattedTextField();
+        txt_tel = new javax.swing.JFormattedTextField();
         tab_list = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -107,6 +107,19 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        try {
+            txt_dtnasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txt_dtnasc.setFocusLostBehavior(javax.swing.JFormattedTextField.PERSIST);
+
+        try {
+            txt_tel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout tab_addcontatoLayout = new javax.swing.GroupLayout(tab_addcontato);
         tab_addcontato.setLayout(tab_addcontatoLayout);
         tab_addcontatoLayout.setHorizontalGroup(
@@ -114,6 +127,10 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(tab_addcontatoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tab_addcontatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tab_addcontatoLayout.createSequentialGroup()
+                        .addComponent(bt_limpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_add))
                     .addGroup(tab_addcontatoLayout.createSequentialGroup()
                         .addGroup(tab_addcontatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lb_nome)
@@ -123,13 +140,9 @@ public class Interface extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addGroup(tab_addcontatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_nome)
+                            .addComponent(txt_mail, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                             .addComponent(txt_dtnasc)
-                            .addComponent(txt_tel)
-                            .addComponent(txt_mail, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)))
-                    .addGroup(tab_addcontatoLayout.createSequentialGroup()
-                        .addComponent(bt_limpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bt_add)))
+                            .addComponent(txt_tel))))
                 .addContainerGap())
         );
         tab_addcontatoLayout.setVerticalGroup(
@@ -436,13 +449,13 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JPanel tab_config;
     private javax.swing.JPanel tab_list;
     private javax.swing.JTable tabela;
-    private javax.swing.JTextField txt_dtnasc;
+    private javax.swing.JFormattedTextField txt_dtnasc;
     private javax.swing.JTextField txt_mail;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JTextField txt_porta;
     private javax.swing.JTextField txt_senha;
     private javax.swing.JTextField txt_servidor;
-    private javax.swing.JTextField txt_tel;
+    private javax.swing.JFormattedTextField txt_tel;
     private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }
